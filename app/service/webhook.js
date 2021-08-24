@@ -116,11 +116,12 @@ class WebhookService extends Service {
     const createdBuilds = _.find(builds, { status: 'created' });
     const runningBuilds = _.find(builds, { status: 'running' });
     const pendingBuilds = _.find(builds, { status: 'pending' });
+    const successBuilds = _.find(builds, { status: 'success' });
     this.logger.info('===> createdBuilds', createdBuilds)
     this.logger.info('===> runningBuilds', runningBuilds)
     this.logger.info('===> pendingBuilds', pendingBuilds)
 
-    if (createdBuilds || runningBuilds || pendingBuilds) {
+    if (createdBuilds || runningBuilds || pendingBuilds || successBuilds) {
       // suppress msg
       return false
     }
